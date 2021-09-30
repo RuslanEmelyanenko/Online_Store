@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Online_Store
 {
-    public class Online_Store
+    public class Online_Store : IRepository
     {
         public string Name { get; set; }
         public string TimeWorking { get; set; }
@@ -39,14 +40,9 @@ namespace Online_Store
                 AdresStore.Street + "/ Почтовый адрес: " + AdresStore.PostalCode);
         }
 
-        public void PhoneDisplayInfo(Phone phone) // Для одного телефона
+        public void DisplayinfoAllItemFromCollection(ICollection collection)  // Для всех телефонов (реализован через интерфейс)
         {
-            Console.WriteLine(phone.ToString());
-        }
-
-        public void DisplayInfoAboutAllPhones() // Для всех телефонов
-        {
-            foreach (Phone phone in ListOfPhones)
+            foreach (var phone in collection)
             {
                 Console.WriteLine(phone.ToString());
             }

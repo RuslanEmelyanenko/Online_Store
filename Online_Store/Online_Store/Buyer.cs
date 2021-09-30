@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections;
 
 namespace Online_Store
 {
-    public class Buyer
+    public class Buyer : IRepository
     {
         public string BuyerName { get; set; }
         public string BuyerPhoneNumber { get; set; }
@@ -26,19 +27,10 @@ namespace Online_Store
             Console.WriteLine($"Имя покупателя: {BuyerName} \nНомер телефона: {BuyerPhoneNumber}");
         }
 
-        // информация о одном товаре в корзине
-        public void BuyerСartDisplayInfo()
+        // информация о всех товарах в корзине (реализован через интерфейс)
+        public void DisplayinfoAllItemFromCollection(ICollection collection)
         {
-            Console.WriteLine("Корзина покупателя: \n");
-            Console.WriteLine(((Phone)Сart.buyerCart[0]).ToString());
-        }
-
-        // информация о всех товарах в корзине
-        public void DisplayInfoAboutAllBuyerCart()
-        {
-            Console.WriteLine("Корзина покупателя: \n");
-
-            foreach (Phone phone in Сart.buyerCart)
+            foreach (var phone in collection)
             {
                 Console.WriteLine(phone.ToString());
             }
