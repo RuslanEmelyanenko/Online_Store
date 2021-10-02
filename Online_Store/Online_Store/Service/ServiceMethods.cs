@@ -36,8 +36,5 @@ namespace Online_Store
 
             return result;
         }
-
-        // Sorting method by price ... 
-   
     }
 }

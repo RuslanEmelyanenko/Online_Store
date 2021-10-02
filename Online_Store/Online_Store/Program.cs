@@ -57,6 +57,8 @@ namespace Online_Store
 
             phones.Add(iPhone_12_MGJE3RM);
 
+            //phones.Sort(); // Sort items by price from Min to Max
+            //phones.Reverse(); // Sort items by price from Max to Min
 
             Online_Store store = new Online_Store("Mobi-Stor ", "Пн.- Сб с 9-00 до 21:00 ", "+375 (44) 0000000 ",
                 new AdresOnlineStore("Беларусь ", "Минск ", "пр-т Партизанский 109Б", "220019"), phones);
@@ -83,17 +85,21 @@ namespace Online_Store
             }
             else if (method == 2)
             {
-                foreach (Phone phone in GetSortFromMinToMaxPrice(phones))
-                {
+                phones.Sort(); // Sort items by price from Min to Max
 
-                    Console.WriteLine(phone.ToString());
+                foreach (Phone phone in phones)
+                {
+                    Console.WriteLine(phone);
                 }
             }
             else
             {
-                foreach (Phone phone in GetSortFromMaxToMinPrice(phones))
+                phones.Sort(); // Sort items by price from Min to Max
+                phones.Reverse(); // Sort items by price from Max to Min
+
+                foreach (Phone phone in phones)
                 {
-                    Console.WriteLine(phone.ToString());
+                    Console.WriteLine(phone);
                 }
             }
             Console.WriteLine(new String('-', 110));
@@ -104,6 +110,9 @@ namespace Online_Store
             buyerСart.Add(iPhone_12_Pro_Max_MGD93RM);
             buyerСart.Add(iPhone_SE_MNGQ3RN);
             buyerСart.Add(iPhone_XR_MH6M3RM);
+
+            //buyerСart.Clear(); // Удалить все товары из корзины
+            //buyerСart.Remove(iPhone_12_Pro_Max_MGD93RM); // Удаление с карзины определенного товара
 
             Buyer buyer = new Buyer("Ruslan", "+375 (33) 3500000", true, new BuyerСart(buyerСart));
 
@@ -120,44 +129,6 @@ namespace Online_Store
 
             Console.WriteLine($"\nИтоговая стоимость за {buyerСart.Count} товар(а)" +
                 $" состовляет: " + serviceMethods.GetSumAllItemFromCollection(buyerСart) + " BYN");
-        }
-
-
-        // Sorting method by price
-        static public List<Phone> GetSortFromMinToMaxPrice(List<Phone> phones)
-        {
-            Phone temp;
-            for (int i = 0; i < phones.Count; i++)
-            {
-                for (int j = 0; j < phones.Count - 1 - i; j++)
-                {
-                    if (phones[j].Price > phones[j + 1].Price)
-                    {
-                        temp = phones[j];
-                        phones[j] = phones[j + 1];
-                        phones[j + 1] = temp;
-                    }
-                }
-            }
-            return phones;
-        }
-
-        static public List<Phone> GetSortFromMaxToMinPrice(List<Phone> phones)
-        {
-            Phone temp;
-            for (int i = 0; i < phones.Count; i++)
-            {
-                for (int j = 0; j < phones.Count - 1 - i; j++)
-                {
-                    if (phones[j].Price < phones[j + 1].Price)
-                    {
-                        temp = phones[j + 1];
-                        phones[j + 1] = phones[j];
-                        phones[j] = temp;
-                    }
-                }
-            }
-            return phones;
         }
     }
 }

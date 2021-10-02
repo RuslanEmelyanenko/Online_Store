@@ -5,10 +5,6 @@ namespace Online_Store
 {
     public interface IService
     {
-       public double GetSumAllItemFromCollection(ICollection collection);
-       public static void GetSortCollectionFromMinToMax()
-        {
-
-        }
+        public double GetSumAllItemFromCollection(ICollection collection);
     }
 }

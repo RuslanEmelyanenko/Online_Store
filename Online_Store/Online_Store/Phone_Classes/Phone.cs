@@ -2,7 +2,7 @@
 
 namespace Online_Store
 {
-    public class Phone
+    public class Phone : IComparable<Phone>
     {
         public PhoneModel Model { get; set; }
         public int PhoneMemory { get; set; }
@@ -30,6 +30,11 @@ namespace Online_Store
                 " / Цвет: " + Color +
                 " / Артикул: " + PhoneVendorCode +
                 " / Цена: " + Price + " BYN";
+        }
+
+        public int CompareTo(Phone other)
+        {
+            return string.Compare(this.Price.ToString(), other.Price.ToString());
         }
     }
 }
